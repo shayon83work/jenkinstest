@@ -1,10 +1,13 @@
 pipeline {
+  agent any
   parameters {
     string(name: 'ticket', defaultValue: '', description: 'blah')
   }
   stages {
     stage('run') {
-      echo 'blah'
+      steps {
+        echo 'blah'
+      }
     }
   }
 }
