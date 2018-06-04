@@ -7,6 +7,7 @@ pipeline {
     stage('run') {
       steps {
         echo 'blah'
+        checkout scm
       }
     }
   }
