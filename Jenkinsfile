@@ -8,7 +8,7 @@ pipeline {
       steps {
         echo 'blah'
         checkout([$class: 'GitSCM', 
-            branches: [[name: '*/param.branch']], 
+            branches: [[name: '*/${param.branch}']], 
             doGenerateSubmoduleConfigurations: false, 
             extensions: [], 
             submoduleCfg: [], 
