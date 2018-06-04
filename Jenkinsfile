@@ -1,13 +1,20 @@
 pipeline {
   agent any
   parameters {
-    string(name: 'ticket', defaultValue: '', description: 'blah')
+    string(name: 'branch', defaultValue: '', description: 'blah')
   }
   stages {
     stage('run') {
       steps {
         echo 'blah'
-        checkout scm
+        checkout([$class: 'GitSCM', 
+            branches: [[name: '*/param.branch']], 
+            doGenerateSubmoduleConfigurations: false, 
+            extensions: [], 
+            submoduleCfg: [], 
+            userRemoteConfigs: [[credentialsId: 'shywork', url: 'https://github.com/shayon83work/jenkinstest']]
+        ])
+        sh '''ls -l'''
       }
     }
   }
